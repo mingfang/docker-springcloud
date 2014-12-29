@@ -1,0 +1,30 @@
+hello:
+  build: ./springcloud-hello
+  working_dir: /hello
+  command: mvn spring-boot:run
+  links:
+    - eureka
+
+zuul:
+  build: ./springcloud-zuul
+  working_dir: /zuul
+  command: mvn spring-boot:run -Deureka.instance.ipAddress=192.168.59.103 -Dspring.cloud.config.discovery.enabled=false
+  ports:
+    - "8080:8080"
+  links:
+    - eureka
+
+eureka:
+  build: ./springcloud-eureka
+  working_dir: /eureka
+  command: mvn spring-boot:run
+  hostname: eureka
+  ports:
+    - "8761:8761"
+
+springcloudbase:
+  build: ./springcloud-base
+
+packetbeat:
+  image: packetbeat
+  net: "host"

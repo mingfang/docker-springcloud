@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: HelloClient
+  cloud:
+    config:
+      enabled: false

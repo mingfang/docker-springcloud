@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: Base
+  cloud:
+    config:
+      enabled: false
